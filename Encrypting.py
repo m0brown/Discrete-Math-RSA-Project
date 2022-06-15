@@ -1,30 +1,27 @@
 import math
 
-def encryption_input():
-    word = input('Phrase to be encrypted: ')
-    word = word.lower()
-    wl = []
-    space = 32
-    period = 27
-    comma = 28
-    question = 29
-    exclamation = 30
-    for letter in word:
-        if letter == ' ':
-            wl.append(space)
-        elif letter == '.':
-            wl.append(period)
-        elif letter == ',':
-            wl.append(comma)
-        elif letter == '?':
-            wl.append(question)
-        elif letter == '!':
-            wl.append(exclamation)
-        else:
-            wl.append(ord(letter) - 96)
-    print('Phrase input to numbers: ', *wl)
-
-encryption_input()
+word = input('Phrase to be encrypted: ')
+word = word.lower()
+wl = []
+space = 32
+period = 27
+comma = 28
+question = 29
+exclamation = 30
+for letter in word:
+    if letter == ' ':
+        wl.append(space)
+    elif letter == '.':
+        wl.append(period)
+    elif letter == ',':
+        wl.append(comma)
+    elif letter == '?':
+        wl.append(question)
+    elif letter == '!':
+        wl.append(exclamation)
+    else:
+        wl.append(ord(letter) - 96)
+print('Phrase input to numbers: ', *wl)
 
 encrypt_list_short = []
 encrypt_list_long = []
