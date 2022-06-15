@@ -1,0 +1,40 @@
+'''
+RSA Program for MAT-230 Discrete Math final discussion.
+'''
+import math
+
+# Decryption function
+def encryption():
+    print ("encryption")
+    #do a thing
+
+# Encryption Function
+def decryption():
+    print("decryption")
+    #do a thing
+
+# Menu function
+def menu():
+    print ('{:*^20}'.format('*'))
+    print ('{:-^20}'.format('Menu'))
+    print ("What would you like to do?")
+    print ("[1] Encryption")
+    print ("[2] Decryption")
+    print ("[3] Exit")
+    print ('{:*^20}'.format('*'))
+
+# Program runs here
+def main():
+    menu()
+    userChoice = input(">")
+
+    while userChoice != 3:
+        if (userChoice == 1):
+            encryption()
+        elif (userChoice == 2):
+            decryption()
+        elif (userChoice == 3):
+            print ("Exiting now, goodbye!")
+            quit()
+        else:
+            print("Invalid choice, try again.")
