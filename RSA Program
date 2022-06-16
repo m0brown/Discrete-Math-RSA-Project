@@ -3,17 +3,116 @@ RSA Program for MAT-230 Discrete Math final discussion.
 """
 import math
 
-# Decryption function
+# Encryption function
 def encryption():
     print("encryption")
-    main ()
-    # do a thing
+    word = input('Phrase to be encrypted: ')
+    word = word.lower()
+    wl = []
+    space = 32
+    period = 27
+    comma = 28
+    question = 29
+    exclamation = 30
+    for letter in word:
+        if letter == ' ':
+            wl.append(space)
+        elif letter == '.':
+            wl.append(period)
+        elif letter == ',':
+            wl.append(comma)
+        elif letter == '?':
+            wl.append(question)
+        elif letter == '!':
+            wl.append(exclamation)
+        else:
+            wl.append(ord(letter) - 96)
+    print('Phrase input to numbers: ', *wl)
 
-# Encryption Function
+    encrypt_list_short = []
+    encrypt_list_long = []
+
+    p = 3
+    q = 11
+    e = 3
+
+    n = p * q
+
+
+    def encrypt(me):
+        global encrypt_list_long
+        en = math.pow(me, e)
+        c = en % n
+        c = int(c)
+        encrypt_list_short.append("%02d" % c)
+        encrypt_list_long = [' '.join(encrypt_list_short)]
+        return c
+
+
+    # run function on int list
+    for item in wl:
+        c = encrypt(item)
+
+
+    print('Encrypted phrase: ', *encrypt_list_long)
+    main ()
+
+# Dncryption Function
 def decryption():
     print("decryption")
+    # Takes input and makes list of integers
+    d_list = [int(item) for item in input("Enter the message to be decrypted: ").split(' ')]
+
+    decrypted_list_short = []
+    decrypted_list_long = []
+
+    message = []
+    space = '32'
+    period = '27'
+    comma = '28'
+    question = '29'
+    exclamation = '30'
+
+    p = 3
+    q = 11
+    e = 3
+    d = 7
+
+    n = p * q
+
+    # Outputs a string
+    def decrypt(c):
+        global decrypted_list_long
+        en = math.pow(c, d)
+        m = en % n
+        m = int(m)
+        decrypted_list_short.append("%02d" % m)
+        decrypted_list_long = [' '.join(decrypted_list_short)]
+        return m
+
+    for item in d_list:
+        m = decrypt(item)
+
+    for item in decrypted_list_short:
+        if item == space:
+            message.append(' ')
+        elif item == period:
+            message.append('.')
+        elif item == comma:
+            message.append(',')
+        elif item == question:
+            message.append('?')
+        elif item == exclamation:
+            message.append('!')
+        else:
+            letter = chr(int(item) + 96)
+            letter = letter.upper()
+            message.append(letter)
+
+    print("Original Message is: ", *d_list)
+    print('Decrypted Message numbers: ', *decrypted_list_long)
+    print('Secret message: ', ''.join(message))
     main ()
-    # do a thing
 
 # Menu function
 def menu():
